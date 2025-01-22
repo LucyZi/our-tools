@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>American Community Survey 5-Year Data (2018-2022)</title>
+    <title>American Community Survey 5-Year Data (2019-2023)</title>
     <style>
         body {
             font-family: Arial;
@@ -367,8 +367,8 @@
         async function fetchVariableMap() {
             try {
                 const [regularResponse, subjectResponse] = await Promise.all([
-                    fetch('https://api.census.gov/data/2022/acs/acs5/variables.json'),
-                    fetch('https://api.census.gov/data/2022/acs/acs5/subject/variables.json')
+                    fetch('https://api.census.gov/data/2023/acs/acs5/variables.json'),
+                    fetch('https://api.census.gov/data/2023/acs/acs5/subject/variables.json')
                 ]);
                 const regularData = await regularResponse.json();
                 const subjectData = await subjectResponse.json();
@@ -445,7 +445,7 @@
         
                 tableData = []; // 清空表格数据
                 const requests = groups.map(group => {
-                    return $.getJSON(`https://api.census.gov/data/2022/acs/acs5?get=NAME,group(${group})&for=tract:${tract}&in=state:${stateFips}%20county:${countyFips}&key=${apiKey}`);
+                    return $.getJSON(`https://api.census.gov/data/2023/acs/acs5?get=NAME,group(${group})&for=tract:${tract}&in=state:${stateFips}%20county:${countyFips}&key=${apiKey}`);
                 });
         
                 $.when(...requests).done((...responses) => {
@@ -535,14 +535,14 @@
             const groupName = 'Selected Characteristics of the Total and Native Populations in the United States';
         
             const incomeLimitVars = [
-                "Total: INDIVIDUALS' INCOME IN THE PAST 12 MONTHS (IN 2022 INFLATION-ADJUSTED DOLLARS): Population 15 years and over",
-                "Total: INDIVIDUALS' INCOME IN THE PAST 12 MONTHS (IN 2022 INFLATION-ADJUSTED DOLLARS): Population 15 years and over: Median income (dollars)",
-                "Native; born in state of residence: INDIVIDUALS' INCOME IN THE PAST 12 MONTHS (IN 2022 INFLATION-ADJUSTED DOLLARS): Population 15 years and over",
-                "Native; born in state of residence: INDIVIDUALS' INCOME IN THE PAST 12 MONTHS (IN 2022 INFLATION-ADJUSTED DOLLARS): Population 15 years and over: Median income (dollars)",
-                "Native; born in other state in the U.S.: INDIVIDUALS' INCOME IN THE PAST 12 MONTHS (IN 2022 INFLATION-ADJUSTED DOLLARS): Population 15 years and over",
-                "Native; born in other state in the U.S.: INDIVIDUALS' INCOME IN THE PAST 12 MONTHS (IN 2022 INFLATION-ADJUSTED DOLLARS): Population 15 years and over: Median income (dollars)",
-                "Native; born outside U.S.: INDIVIDUALS' INCOME IN THE PAST 12 MONTHS (IN 2022 INFLATION-ADJUSTED DOLLARS): Population 15 years and over",
-                "Native; born outside U.S.: INDIVIDUALS' INCOME IN THE PAST 12 MONTHS (IN 2022 INFLATION-ADJUSTED DOLLARS): Population 15 years and over: Median income (dollars)"
+                "Total: INDIVIDUALS' INCOME IN THE PAST 12 MONTHS (IN 2023 INFLATION-ADJUSTED DOLLARS): Population 15 years and over",
+                "Total: INDIVIDUALS' INCOME IN THE PAST 12 MONTHS (IN 2023 INFLATION-ADJUSTED DOLLARS): Population 15 years and over: Median income (dollars)",
+                "Native; born in state of residence: INDIVIDUALS' INCOME IN THE PAST 12 MONTHS (IN 2023 INFLATION-ADJUSTED DOLLARS): Population 15 years and over",
+                "Native; born in state of residence: INDIVIDUALS' INCOME IN THE PAST 12 MONTHS (IN 2023 INFLATION-ADJUSTED DOLLARS): Population 15 years and over: Median income (dollars)",
+                "Native; born in other state in the U.S.: INDIVIDUALS' INCOME IN THE PAST 12 MONTHS (IN 2023 INFLATION-ADJUSTED DOLLARS): Population 15 years and over",
+                "Native; born in other state in the U.S.: INDIVIDUALS' INCOME IN THE PAST 12 MONTHS (IN 2023 INFLATION-ADJUSTED DOLLARS): Population 15 years and over: Median income (dollars)",
+                "Native; born outside U.S.: INDIVIDUALS' INCOME IN THE PAST 12 MONTHS (IN 2023 INFLATION-ADJUSTED DOLLARS): Population 15 years and over",
+                "Native; born outside U.S.: INDIVIDUALS' INCOME IN THE PAST 12 MONTHS (IN 2023 INFLATION-ADJUSTED DOLLARS): Population 15 years and over: Median income (dollars)"
             ];
         
             const noPercentageVars = [
@@ -575,7 +575,7 @@
                 'Native; born outside U.S.: Total population: AGE: Median age (years)'
             ];
         
-            $.getJSON(`https://api.census.gov/data/2022/acs/acs5/subject?get=NAME,group(${group})&for=tract:${tract}&in=state:${stateFips}%20county:${countyFips}&key=${apiKey}`, (data) => {
+            $.getJSON(`https://api.census.gov/data/2023/acs/acs5/subject?get=NAME,group(${group})&for=tract:${tract}&in=state:${stateFips}%20county:${countyFips}&key=${apiKey}`, (data) => {
                 if (data.length > 1) {
                     data.slice(1).forEach(row => {
                         for (let i = 1; i < row.length - 1; i++) {
